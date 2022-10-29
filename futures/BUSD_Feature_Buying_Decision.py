@@ -1,13 +1,12 @@
-import re
 from pprint import pprint
 
 import talib
-
 from dataframe.dataframe import GetDataframe
+from sound.ringbell import Ring
+from binance.helpers import round_step_size
 
 
 class Feature(GetDataframe):
-
     def data_pull(self, symbol, look_back):
         days_panda_data = self.get_minute_data(symbol, 1, look_back)
         close_column = days_panda_data['Close']
@@ -21,14 +20,50 @@ class Feature(GetDataframe):
         # print(real)
         return real
 
+    # def get_account_balance(self, symbol):
+    #     balance = APICall.client.futures_account_balance()[-1]['balance']
+    #     avg_price = APICall.client.get_avg_price(symbol=symbol)
+    #     asset_price = avg_price['price']
+    #     buying_asset = float(balance) / float(asset_price)
+    #     # print(input("Final Stop :"))
+    #     print(int(float(buying_asset)))
+    #     return int(float(buying_asset))-1
+
+    def buy_futures_contract(self, symbol):
+        sell = input("Type 'Yes' :")
+        print(sell)
+        if sell == "Yes":
+            APICall.client.futures_create_order(symbol=symbol, side='BUY', type='MARKET', quantity=100)
+            print(input("Done Buying :"))
+        else:
+            print("Technical indicator is not right")
+        return symbol
+
+    def sell_futures_contract(self, symbol):
+        sell = input("Type 'Yes' :")
+        print(sell)
+        if sell == "Yes":
+            APICall.client.futures_create_order(symbol=symbol, side='SELL', type='MARKET', quantity=100)
+            print(input("Done Buying :"))
+        else:
+            print("Technical indicator is not right")
+        return symbol
+
     def buying_signal(self, symbol):
         if self.moving_average(symbol, "90") > self.moving_average(symbol, "25") > self.moving_average(symbol, "7"):
-            print(f"buy {symbol}")
+            print(f"Buy/Long : {symbol}")
             # Ring().play_long_sound('../sound/Sample.wav')
             print(input("Stop Sound or Lower the volume:"))
-            # return symbol
+            self.buy_futures_contract(symbol)
+            return symbol
+        elif self.moving_average(symbol, "90") < self.moving_average(symbol, "25") < self.moving_average(symbol, "7"):
+            print(f"Sell/Short : {symbol}")
+            # Ring().play_long_sound('../sound/Sample.wav')
+            print(input("Stop Sound or Lower the volume:"))
+            self.sell_futures_contract(symbol)
+            return symbol
         else:
-            print(f"Moving Average of {symbol} pass the limit")
+            print(f"Find {symbol} in no position")
 
 
 import pandas as pd
@@ -39,45 +74,22 @@ from get_symbol.find_symbols import FindSymbols
 fs = FindSymbols()
 feature = Feature()
 
-ticker_info = pd.DataFrame(APICall.client.get_ticker())
-# print(ticker_info)
-all_symbol = fs.get_all_symbols("BUSD", ticker_info)
-# print(all_symbol['symbol'])
-# print(all_symbol['symbol'].iloc[0])
-# print(input("Stop :"))
-# print(feature.data_pull(all_symbol['symbol'].iloc[0], 30))
-
-# feature.buying_signal(all_symbol['symbol'].iloc[0])
-
-# feature.buying_signal('DNTBUSD')
-
 futures_exchange_info = APICall.client.futures_exchange_info()
 trading_pairs = [info['symbol'] for info in futures_exchange_info['symbols']]
 
-# for symbol in trading_pairs:
-#     print(symbol)
 
-# print(trading_pairs)
-# print(len(trading_pairs))
-
-
-def moving_average_signal():
+def feature_coin_buying_signal():
     ticker_info = pd.DataFrame(APICall.client.get_ticker())
     all_symbol = fs.get_all_symbols("BUSD", ticker_info)
     for symbol in all_symbol["symbol"]:
-        # print(symbol)
         string = symbol
-
         result = [word for word in trading_pairs if word in string]
-        # print(result)
-        # print(len(result))
         if len(result) != 0:
             feature.buying_signal(symbol)
-            # print(input("stop :"))
 
-    print(input("stop :"))
+    # print(input("stop :"))
 
 
-moving_average_signal()
+feature_coin_buying_signal()
 
 
