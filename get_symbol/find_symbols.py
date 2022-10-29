@@ -1,18 +1,37 @@
+# binance_quick_band = ['DOGEBUSD']
+low_profit_con = ['BTCBUSD']
+bad_coin = ['DNTBUSD', 'BUSDBKRW', 'KEEPBUSD', 'NUBUSD', 'STRATBUSD', 'RLCBUSD', 'SWRVBUSD', 'RAMPBUSD', 'ETHBULLBUSD', 'BOTBUSD',
+            'GNOBUSD', 'BEARBUSD', 'BULLBUSD', 'AIONBUSD', 'BTTBUSD', 'XRPBEARBUSD', 'XRPBULLBUSD', 'RGTBUSD',
+            'ETHBEARBUSD', 'NANOBUSD', 'BCHABUSD', 'HEGICBUSD', 'BTSBUSD', 'EOSBEARBUSD', 'COVERBUSD', 'EPSBUSD',
+            'YFIIBUSD', 'EOSBULLBUSD', 'BUSDBVND', 'TRUBUSD', 'XEMBUSD', 'PAXBUSD', 'BUSDIDRT', 'FLMBUSD', 'BUSDNGN',
+            'VTHOBUSD', 'BCHABCBUSD', 'USTBUSD', 'KMDBUSD', 'BNBBULLBUSD', 'LENDBUSD', 'REPBUSD', 'BUSDZAR', 'DAIBUSD',
+            'BNBBEARBUSD', 'DCRBUSD', 'ANYBUSD', 'IRISBUSD', 'USDSBUSDS', 'ERDBUSD', 'PHBUSDC', 'BZRXBUSD', 'BKRWBUSD',
+            'USDSBUSDT', 'BNBUSDS', 'WNXMBUSD']
+faulty_coin = ['TORNBUSD']
+unnecessary_keyword = ['UP', 'DOWN']
+controversial_coin = ['SHIBUSDT']
+
+total_unnecessary_coin = bad_coin + faulty_coin + unnecessary_keyword + controversial_coin + low_profit_con
+
+# print(total_unnecessary_coin)
+# print(input("Stop"))
+
 
 class FindSymbols:
 
     @staticmethod
     def get_all_symbols(currency_symbol, candle_info):
-        bad_coin = ['UP', 'DOWN', 'BUSDBKRW', 'KEEPBUSD', 'NUBUSD', 'STRATBUSD', 'RLCBUSD', 'SWRVBUSD', 'RAMPBUSD', 'ETHBULLBUSD', 'BOTBUSD', 'GNOBUSD', 'BEARBUSD', 'BULLBUSD', 'AIONBUSD', 'BTTBUSD', 'XRPBEARBUSD', 'XRPBULLBUSD', 'RGTBUSD', 'ETHBEARBUSD', 'NANOBUSD', 'BCHABUSD', 'HEGICBUSD', 'BTSBUSD', 'EOSBEARBUSD', 'COVERBUSD', 'EPSBUSD', 'YFIIBUSD', 'EOSBULLBUSD', 'BUSDBVND', 'TRUBUSD', 'XEMBUSD', 'PAXBUSD', 'BUSDIDRT', 'FLMBUSD', 'BUSDNGN', 'VTHOBUSD', 'BCHABCBUSD', 'USTBUSD', 'KMDBUSD', 'BNBBULLBUSD', 'LENDBUSD', 'REPBUSD', 'BUSDZAR', 'DAIBUSD', 'BNBBEARBUSD', 'DCRBUSD', 'ANYBUSD', 'IRISBUSD', 'USDSBUSDS', 'ERDBUSD', 'PHBUSDC', 'BZRXBUSD', 'BKRWBUSD', 'USDSBUSDT', 'BNBUSDS', 'WNXMBUSD']
+        all_bad_coin = total_unnecessary_coin
         busd_info = candle_info[candle_info.symbol.str.contains(currency_symbol)]
-        non_leverage = busd_info[~busd_info['symbol'].isin(bad_coin)]
+        non_leverage = busd_info[~busd_info['symbol'].isin(all_bad_coin)]
         non_leverage.priceChangePercent = non_leverage['priceChangePercent'].astype(float)
         non_leverage = non_leverage.sort_values(by='priceChangePercent', ascending=False)
         non_leverage = non_leverage.iloc[:, :4]
-        symbols = non_leverage
-        # symbols = non_leverage.loc[non_leverage['priceChangePercent'].astype(float) > 0]
-        print(f"{len(symbols)} symbol we are processing.")
-        print(symbols)
+        # symbols = non_leverage
+        symbols = non_leverage.loc[non_leverage['priceChangePercent'].astype(float) > 0]
+        # print(f"{len(symbols)} symbol we are processing.")
+        # print(symbols)
+        # print(input("test pose:"))
         # return symbols.head(2)
         return symbols
 
