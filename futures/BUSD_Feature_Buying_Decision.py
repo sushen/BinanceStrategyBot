@@ -33,7 +33,7 @@ class Feature(GetDataframe):
         sell = input("Type 'Yes' :")
         print(sell)
         if sell == "Yes":
-            APICall.client.futures_create_order(symbol=symbol, side='BUY', type='MARKET', quantity=100)
+            APICall.client.futures_create_order(symbol=symbol, side='BUY', type='MARKET', quantity=99)
             print(input("Done Buying :"))
         else:
             print("Technical indicator is not right")
@@ -43,7 +43,7 @@ class Feature(GetDataframe):
         sell = input("Type 'Yes' :")
         print(sell)
         if sell == "Yes":
-            APICall.client.futures_create_order(symbol=symbol, side='SELL', type='MARKET', quantity=100)
+            APICall.client.futures_create_order(symbol=symbol, side='SELL', type='MARKET', quantity=99)
             print(input("Done Buying :"))
         else:
             print("Technical indicator is not right")
@@ -53,17 +53,17 @@ class Feature(GetDataframe):
         if self.moving_average(symbol, "90") > self.moving_average(symbol, "25") > self.moving_average(symbol, "7"):
             print(f"Buy/Long : {symbol}")
             # Ring().play_long_sound('../sound/Sample.wav')
-            print(input("Stop Sound or Lower the volume:"))
+            # print(input("Stop Sound or Lower the volume:"))
             self.buy_futures_contract(symbol)
             return symbol
         elif self.moving_average(symbol, "90") < self.moving_average(symbol, "25") < self.moving_average(symbol, "7"):
             print(f"Sell/Short : {symbol}")
             # Ring().play_long_sound('../sound/Sample.wav')
-            print(input("Stop Sound or Lower the volume:"))
+            # print(input("Stop Sound or Lower the volume:"))
             self.sell_futures_contract(symbol)
             return symbol
         else:
-            print(f"Find {symbol} in no position")
+            print(f"Asset {symbol} have no position for Buy?Sell")
 
 
 import pandas as pd
