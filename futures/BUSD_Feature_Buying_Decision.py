@@ -20,15 +20,6 @@ class Feature(GetDataframe):
         # print(real)
         return real
 
-    # def get_account_balance(self, symbol):
-    #     balance = APICall.client.futures_account_balance()[-1]['balance']
-    #     avg_price = APICall.client.get_avg_price(symbol=symbol)
-    #     asset_price = avg_price['price']
-    #     buying_asset = float(balance) / float(asset_price)
-    #     # print(input("Final Stop :"))
-    #     print(int(float(buying_asset)))
-    #     return int(float(buying_asset))-1
-
     def buy_futures_contract(self, symbol):
         sell = input("Type 'Yes' :")
         print(sell)
@@ -63,7 +54,7 @@ class Feature(GetDataframe):
             self.sell_futures_contract(symbol)
             return symbol
         else:
-            print(f"Asset {symbol} have no position for Buy?Sell")
+            print(f"Asset {symbol} have no position for Buy/Sell")
 
 
 import pandas as pd
