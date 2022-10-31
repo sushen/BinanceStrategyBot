@@ -31,10 +31,10 @@ class FiveMinuteMA(GetDataframe, FuturesBuySell):
     def five_minutes_buying_decision(self, symbol):
         if self.five_minutes_moving_average(symbol, "90") > self.five_minutes_moving_average(symbol, "25") > self.five_minutes_moving_average(symbol, "7"):
             # print(f"Buy/Long : {symbol}")
-            return symbol
+            return "Long"
         elif self.five_minutes_moving_average(symbol, "90") < self.five_minutes_moving_average(symbol, "25") < self.five_minutes_moving_average(symbol, "7"):
             # print(f"Sell/Short : {symbol}")
-            return symbol
+            return "Short"
         else:
             print(f"Asset {symbol} have no decision for Buy/Sell")
 

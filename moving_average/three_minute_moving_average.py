@@ -7,12 +7,13 @@ class ThreeMinuteMA(GetDataframe, FuturesBuySell):
     def three_minutes_data_pull(self, symbol, look_back):
         days_panda_data = self.get_minute_data(symbol, 3, look_back)
         close_column = days_panda_data['Close']
+        print(close_column)
         return close_column
 
     def three_minutes_moving_average(self, symbol, look_back):
         close_column = self.three_minutes_data_pull(symbol, look_back)
         real = talib.MA(close_column, timeperiod=int(look_back), matype=0).iloc[-1]
-        # print(real)
+        print(real)
         return real
 
     def three_minutes_buying_signal(self, symbol):
@@ -31,13 +32,15 @@ class ThreeMinuteMA(GetDataframe, FuturesBuySell):
     def three_minutes_buying_decision(self, symbol):
         if self.three_minutes_moving_average(symbol, "90") > self.three_minutes_moving_average(symbol, "25") > self.three_minutes_moving_average(symbol, "7"):
             # print(f"Buy/Long : {symbol}")
-            return symbol
+            return "Long"
         elif self.three_minutes_moving_average(symbol, "90") < self.three_minutes_moving_average(symbol, "25") < self.three_minutes_moving_average(symbol, "7"):
             # print(f"Sell/Short : {symbol}")
-            return symbol
+            return "Short"
         else:
             print(f"Asset {symbol} have no decision for Buy/Sell")
 
 
 # ThreeMinuteMA().three_minutes_buying_decision("GALABUSD")
-print(ThreeMinuteMA().three_minutes_buying_decision("GALABUSD"))
+# print(ThreeMinuteMA().three_minutes_buying_decision("GALABUSD"))
+ThreeMinuteMA().three_minutes_data_pull(symbol="GALABUSD", look_back=7)
+# ThreeMinuteMA().three_minutes_moving_average(symbol="GALABUSD", look_back=7)

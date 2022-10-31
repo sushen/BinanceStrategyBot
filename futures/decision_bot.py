@@ -1,5 +1,6 @@
 import time
 
+from moving_average.fifteen_minute_moving_average import FifteenMinuteMA
 from moving_average.five_minute_moving_average import FiveMinuteMA
 from moving_average.one_minute_moving_average import OneMinuteMA
 from moving_average.three_minute_moving_average import ThreeMinuteMA
@@ -59,6 +60,32 @@ def feature_coin_buying_signal():
 
         if len(result) != 0:
             one_minutes_decision = OneMinuteMA().one_minutes_buying_decision(symbol)
+            # print(one_minutes_decision)
+
+            if one_minutes_decision == "Long":
+                print("Decide Position Base On One Minutes\n")
+
+                three_minutes_decision = ThreeMinuteMA().three_minutes_buying_decision(symbol)
+                print(three_minutes_decision)
+                if three_minutes_decision == "Long":
+                    print("Decide Position Base On Three Minutes\n")
+                else:
+                    print("Three Minutes are not making signal\n")
+                print(input("Stop :"))
+
+                five_minutes_decision = FiveMinuteMA().five_minutes_buying_decision(symbol)
+                if five_minutes_decision == "Long":
+                    print("Decide Position Base On Five Minutes\n")
+                else:
+                    print("Five Minutes are not making signal\n")
+
+                fifteen_minutes_decision = FifteenMinuteMA().fifteen_minutes_buying_decision(symbol)
+                if fifteen_minutes_decision == "Long":
+                    print("Decide Position Base On Fifteen Minutes\n")
+                else:
+                    print("Fifteen Minutes are not making signal\n")
+
+                print(input(f"Long {symbol} :"))
 
             if one_minutes_decision == "Short":
                 print("Decide Position Base On One Minutes\n")
@@ -75,24 +102,13 @@ def feature_coin_buying_signal():
                 else:
                     print("Five Minutes are not making signal\n")
 
+                fifteen_minutes_decision = FifteenMinuteMA().fifteen_minutes_buying_decision(symbol)
+                if fifteen_minutes_decision == "Short":
+                    print("Decide Position Base On Fifteen Minutes\n")
+                else:
+                    print("Fifteen Minutes are not making signal\n")
+
                 print(input(f"Short {symbol} :"))
-
-            elif one_minutes_decision == "Long":
-                print("Decide Position Base On One Minutes\n")
-
-                three_minutes_decision = ThreeMinuteMA().three_minutes_buying_decision(symbol)
-                if three_minutes_decision == "Long":
-                    print("Decide Position Base On Three Minutes\n")
-                else:
-                    print("Three Minutes are not making signal\n")
-
-                five_minutes_decision = FiveMinuteMA().five_minutes_buying_decision(symbol)
-                if five_minutes_decision == "Long":
-                    print("Decide Position Base On Five Minutes\n")
-                else:
-                    print("Five Minutes are not making signal\n")
-
-                print(input(f"Long {symbol} :"))
 
             # print(input("Stop :"))
             # decision.three_minute_decision(symbol)

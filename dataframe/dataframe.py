@@ -46,6 +46,7 @@ class GetDataframe:
     def get_minute_data(self, symbol, interval, lookback):
         frame = pd.DataFrame(APICall.client.get_historical_klines(symbol, f"{interval}m", f"{lookback} min ago UTC"))
         frame = self.frame_to_symbol(symbol, frame)
+        # print(frame)
         return frame
 
     def data_function(self, symbol, interval, lookback):
@@ -54,3 +55,5 @@ class GetDataframe:
 
 # data_f = GetDataframe()
 # print(data_f.data_function('BTCBUSD', 1, 5))
+
+# GetDataframe().get_minute_data('GALABUSD', 15, 90)
