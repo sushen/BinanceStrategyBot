@@ -40,4 +40,4 @@ class ThreeMinuteMA(GetDataframe, FuturesBuySell):
 
 
 # ThreeMinuteMA().three_minutes_buying_decision("GALABUSD")
-# print(ThreeMinuteMA().three_minutes_buying_decision("GALABUSD"))
+print(ThreeMinuteMA().three_minutes_buying_decision("GALABUSD"))
