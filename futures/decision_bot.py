@@ -61,19 +61,26 @@ def feature_coin_buying_signal():
 
             if one_minutes_decision == "Short":
                 print("Decide Position Base On One Minutes\n")
-                print(input(f"Short {symbol} :"))
 
                 three_minutes_decision = ThreeMinuteMA().three_minutes_buying_decision(symbol)
                 if three_minutes_decision == "Short":
                     print("Decide Position Base On Three Minutes")
+                else:
+                    print("Three Minutes are not making signal")
+
+                print(input(f"Short {symbol} :"))
 
             elif one_minutes_decision == "Long":
                 print("Decide Position Base On One Minutes\n")
-                print(input(f"Long {symbol} :"))
 
                 three_minutes_decision = ThreeMinuteMA().three_minutes_buying_decision(symbol)
                 if three_minutes_decision == "Long":
                     print("Decide Position Base On Three Minutes")
+                    print(input(f"Long {symbol} :"))
+                else:
+                    print("Three Minutes are not making signal")
+
+                print(input(f"Short {symbol} :"))
 
             # print(input("Stop :"))
             # decision.three_minute_decision(symbol)
