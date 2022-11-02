@@ -7,7 +7,7 @@ bad_coin = ['DNTBUSD', 'BUSDBKRW', 'KEEPBUSD', 'NUBUSD', 'STRATBUSD', 'RLCBUSD',
             'VTHOBUSD', 'BCHABCBUSD', 'USTBUSD', 'KMDBUSD', 'BNBBULLBUSD', 'LENDBUSD', 'REPBUSD', 'BUSDZAR', 'DAIBUSD',
             'BNBBEARBUSD', 'DCRBUSD', 'ANYBUSD', 'IRISBUSD', 'USDSBUSDS', 'ERDBUSD', 'PHBUSDC', 'BZRXBUSD', 'BKRWBUSD',
             'USDSBUSDT', 'BNBUSDS', 'WNXMBUSD']
-faulty_coin = ['TORNBUSD']
+faulty_coin = ['TORNBUSD', '1000LUNCBUSD', 'LUNA2BUSD', '1000SHIBBUSD']
 unnecessary_keyword = ['UP', 'DOWN']
 controversial_coin = ['SHIBUSDT']
 
