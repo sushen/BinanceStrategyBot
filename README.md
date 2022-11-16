@@ -1,4 +1,57 @@
-# BinanceSignalBot
+# Binance Strategy Bot
+
+## Built With
+
+- Python
+- Binance API
+
+## Getting Started
+Fork It and Run the bot.html
+
+### Prerequisites
+Basic knowledge of Python and Candlesticks
+
+### TA-LIB Installetion
+pip install TA_Lib-0.4.24-cp310-cp310-win_amd64.whl
+
+### Setup
+If you installed git you can clone the code to your machine, or download a ZIP of all the files directly.
+
+[Download the ZIP from this location](https://github.com/sushen/BinanceFuturesBot/), or run the following [git](https://git-scm.com/downloads) command to clone the files to your machine:
+
+
+To get a local copy up and running follow these simple steps:
+ -On your terminal/IDE use the command "git clone [https://github.com/sushen/BinanceFuturesBot.git"](https://github.com/sushen/BinanceFuturesBot.git) "
+ - Once the files are on your machine, open the _BinanceFuturesBot_ folder in [Visual Studio Code](https://code.visualstudio.com/)
+ - Edit the necessary part
+## Author
+
+👤 **Sushen Biswas**
+
+- GitHub: [@githubhandle](https://github.com/sushen)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/sushen-biswas-67672572/)
+
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](../../issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- thanks microvers for your templets
+- thenks coding paretiners for your suport
+
+
+## 📝 License
+
+This project is [MIT](./LICENSE) licensed.
+
 
 Binance Account Opening :
 https://accounts.binance.com/en/register?ref=35023868
