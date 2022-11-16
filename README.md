@@ -8,7 +8,7 @@
 - Binance API
 
 ## Getting Started
-Fork It and Run the bot.html
+Fork It and Run the bot.py
 
 ### Prerequisites
 Basic knowledge of Python and Candlesticks
