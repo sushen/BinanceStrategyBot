@@ -1,5 +1,7 @@
 # Binance Strategy Bot
 
+[![Binance Cripto Bot](https://user-images.githubusercontent.com/4492335/160128119-364736e7-53f5-4f93-ac6a-1c556bdb8da3.png)](https://youtu.be/7XQhYYIiXvA)
+
 ## Built With
 
 - Python
@@ -65,8 +67,6 @@ https://accounts.binance.com/en/register?ref=35023868
 
 fact like that are strategy and we want to trun this into strategy.
 
-
-[![Binance Cripto Bot](https://user-images.githubusercontent.com/4492335/160128119-364736e7-53f5-4f93-ac6a-1c556bdb8da3.png)](https://youtu.be/7XQhYYIiXvA)
 
 ## Hage Fund Club :
 If you are in as a investor you will got all the profitable strategy without knowing what they are.
