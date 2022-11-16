@@ -83,4 +83,4 @@ We Can implement This in copy trade market like ptime x bt for collecting anonym
 - When you just want to learn and want out effort to improve your personal status we will charde you from our profit. We understand helping a community is nots erverones gole you have others prorioraty in your life and we respect that.
 - When you think you will invent something interesting keep working we will help you to gain coustomer so you can sell your inovation and make the money you deserve.
 
-Enjoy the community.  
+💘 Enjoy the community.  
