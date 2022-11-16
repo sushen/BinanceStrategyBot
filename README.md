@@ -77,3 +77,10 @@ We are pulling the profitable stocks but before that a human have to conform thi
 We have to to find the full moon and new moon have any effect on price movement or not.
 
 We Can implement This in copy trade market like ptime x bt for collecting anonymous capital.
+
+## How you becam benificial as a coder?
+- When you learn with me you get that code to use your own trading and I got someone who is willingly help me to improve the intelicatual propery and you become the most valueable persion on my community
+- When you just want to learn and want out effort to improve your personal status we will charde you from our profit. We understand helping a community is nots erverones gole you have others prorioraty in your life and we respect that.
+- When you think you will invent something interesting keep working we will help you to gain coustomer so you can sell your inovation and make the money you deserve.
+
+Enjoy the community.  
